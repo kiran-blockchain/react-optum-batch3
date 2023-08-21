@@ -29,6 +29,10 @@ export const Dropdown = (props) => {
             class="form-control" 
             id={dropdownConfig.id}
             name={dropdownConfig.name}
+            value={dropdownConfig.value}
+            onChange={(e)=>{
+                props.changeEvt(e.target)
+            }}
             >
                 <option value="">Please Select</option>
                 {buildOptions()}

@@ -24,6 +24,10 @@ export const Textbox = (props) => {
             class="form-control" 
             id={textBoxConfig.id}
             name={textBoxConfig.name}
+            value={textBoxConfig.value}
+            onChange={(e)=>{
+                props.changeEvt(e.target)
+            }}
             aria-describedby={textBoxConfig.helpField} 
             placeholder={textBoxConfig.placeholder}/>
                 <small id={textBoxConfig.id}

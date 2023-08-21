@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Counter } from "./components/Counter";
 import {  Footer } from "./components/Footer"
 import { Header } from "./components/Header"
@@ -11,12 +12,16 @@ export const App = () => {
         links:['Home','Electronics', 'Apparel']
 
     }
+    const [count,setCount] = useState(10);
+    const handleClickFromChild =(e)=>{
+        setCount(count+1);
+    }
     return (
         <div>
             <Header headerConfig = {headerDetails}/>
            
             <Register/>
-            <Counter/>
+            <Counter handleClick ={handleClickFromChild}/>{count}
             
             <Footer/>
         </div>
