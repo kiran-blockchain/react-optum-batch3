@@ -1,4 +1,5 @@
 import { Textbox } from "../components/Textbox"
+import { registerConfig } from "../config/registerConfig";
 
 export const Register = () => {
 
@@ -33,9 +34,11 @@ export const Register = () => {
     return (
         <form className="container mt-5">
           
-                    <Textbox textBoxConfig={firstNameObj} />
-                    <Textbox textBoxConfig={lastNameObj} />
-                    <Textbox textBoxConfig={passwordObj} />
+                    <Textbox textBoxConfig={registerConfig.firstName} />
+                    <Textbox textBoxConfig={registerConfig.lastName} />
+                    <Textbox textBoxConfig={registerConfig.email} />
+                    <Textbox textBoxConfig={registerConfig.password} />
+                    <Textbox textBoxConfig={registerConfig.confirmPassword} />
         </form>
     )
 }
