@@ -26,7 +26,8 @@ export const Textbox = (props) => {
             name={textBoxConfig.name}
             aria-describedby={textBoxConfig.helpField} 
             placeholder={textBoxConfig.placeholder}/>
-                <small id="emailHelp" class="form-text text-muted">{textBoxConfig.helpText}</small>
+                <small id={textBoxConfig.id}
+                 class="form-text text-muted">{textBoxConfig.helpText}</small>
             </div>
         </div>
     )

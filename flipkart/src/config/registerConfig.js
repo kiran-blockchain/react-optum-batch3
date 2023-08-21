@@ -8,6 +8,15 @@ export const registerConfig ={
         helpText: "",
         placeholder: "Enter First Name"
     },
+    lastName: {
+        label: "Last Name",
+        type: "text",
+        id: "lastName",
+        name: "lastName",
+        helpField: "",
+        helpText: "",
+        placeholder: "Enter Last Name"
+    },
     password: {
         label: "Password",
         type: "password",
@@ -33,6 +42,6 @@ export const registerConfig ={
         name: "email",
         helpField: "",
         helpText: "",
-        placeholder: "Enter e-mail  "
+        placeholder: "Enter email"
     }
 }
