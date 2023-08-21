@@ -1,18 +1,21 @@
 import {  Footer } from "./components/Footer"
 import { Header } from "./components/Header"
+import { Register } from "./pages/Register";
 
 export const App = () => {
     const companyName ='Optum Global Services';//
     const headerDetails ={
         companyName:"Optum Golbal Services",
         theme:"dark",
-        links:['Home','Home Appliances', 'Apparel']
+        links:['Home','Electronics', 'Apparel']
 
     }
     return (
         <div>
             <Header headerConfig = {headerDetails}/>
-            <h1>Welcome to {companyName} react  Learning</h1>
+           
+            <Register/>
+            
             <Footer/>
         </div>
     )
