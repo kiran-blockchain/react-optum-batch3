@@ -7,7 +7,7 @@ import { Products } from "./pages/Products";
 import { CartContext } from "./Providers/CartProvider";
 import { ThemeContext } from "./Providers/ThemeProvider";
 import { Cart } from "./components/Cart";
-import { AppRoutes } from "./rotues";
+import { AppRoutes } from "./routes";
 
 export const App = () => {
     const companyName = 'Optum Global Services';//
