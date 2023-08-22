@@ -3,6 +3,7 @@ import { Counter } from "./components/Counter";
 import {  Footer } from "./components/Footer"
 import { Header } from "./components/Header"
 import { Register } from "./pages/Register";
+import { Products } from "./pages/Prodcuts";
 
 export const App = () => {
     const companyName ='Optum Global Services';//
@@ -19,9 +20,9 @@ export const App = () => {
     return (
         <div>
             <Header headerConfig = {headerDetails}/>
-           
-            <Register/>
-            <Counter handleClick ={handleClickFromChild}/>{count}
+            <Products/>
+            {/* <Register/>
+            <Counter handleClick ={handleClickFromChild}/>{count} */}
             
             <Footer/>
         </div>
