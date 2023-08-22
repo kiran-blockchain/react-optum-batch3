@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dropdown } from "../components/Dropdown";
 import { Textbox } from "../components/Textbox"
 import { registerConfig } from "../config/registerConfig";
+import { GET_COUNTRIES_URL } from "../constants";
+import {  services } from "../services";
 
 export const Register = () => {
     const [register,setRegister] = useState({
@@ -12,6 +14,9 @@ export const Register = () => {
         confirmPassword:"",
         country:""
     });
+    const [countryList,setCountryList] = useState([{
+        value:"",text:"Please Select"
+    }])
 
     const handleChange =(element)=>{
         console.log(element.name);
@@ -25,12 +30,24 @@ export const Register = () => {
         name: "country",
         label: "Select Countries"
     };
-    const countryList = [{
-        value: "IN", text: "India"
-    },
-    { value: "USA", text: "United States of America" }];
 
-  ;
+    useEffect(()=>{
+       
+        const getCountries = async(url)=>{
+            let result  = await services.getApi(url);
+            console.log(result);
+            const mappedResponse = result.map((item,index)=>{
+                return {text:item.name,
+                    value:item.alpha2Code}
+            });
+            setCountryList(mappedResponse);
+        };
+        
+        //make the api call
+        getCountries(GET_COUNTRIES_URL)
+
+    },[]);
+
     return (
         <form className="container mt-5">
             <Textbox textBoxConfig={registerConfig.firstName} 
