@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../../Providers/CartProvider";
 import { ThemeContext } from "../../Providers/ThemeProvider";
+import { Link } from "react-router-dom";
 
 export const Header = (props) => {
     console.log(props);
@@ -13,7 +14,8 @@ export const Header = (props) => {
         return (
             navItems.length > 0 ? navItems.map((item, index) => {
                 return (<li class="nav-item" key={index}>
-                    <a class="nav-link active" href="#">{item}
+                    {/* <Link to={item} className="nav-link">{item}</Link> */}
+                    <a class="nav-link active" href={item.toLowerCase()}>{item}
                     </a>
                 </li>)
             }) : null
