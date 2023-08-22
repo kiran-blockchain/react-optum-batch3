@@ -5,6 +5,7 @@ import { Header } from "./components/Header"
 import { Register } from "./pages/Register";
 import { Products } from "./pages/Products";
 import { CartContext } from "./Providers/CartProvider";
+import { ThemeContext } from "./Providers/ThemeProvider";
 
 export const App = () => {
     const companyName = 'Optum Global Services';//
@@ -13,15 +14,17 @@ export const App = () => {
         theme: "dark",
         links: ['Home', 'Electronics', 'Apparel']
     };
-    const [cartItems,setCartItems] = useState([]);
-   
+    const [cartItems, setCartItems] = useState([]);
+    const [theme, setTheme] = useState("Dark");
     return (
         <div>
-            <CartContext.Provider value={{cartItems,setCartItems}}>
-                <Header headerConfig={headerDetails} />
-                <Products />
-                <Footer />
-            </CartContext.Provider>
+            <ThemeContext.Provider value={{ theme, setTheme }}>
+                <CartContext.Provider value={{ cartItems, setCartItems }}>
+                    <Header headerConfig={headerDetails} />
+                    <Products />
+                    <Footer />
+                </CartContext.Provider>
+            </ThemeContext.Provider>
         </div>
     )
 }

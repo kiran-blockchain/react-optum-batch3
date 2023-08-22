@@ -1,20 +1,22 @@
 import { useContext } from "react";
 import { CartContext } from "../../Providers/CartProvider";
+import { ThemeContext } from "../../Providers/ThemeProvider";
 
 export const Header = (props) => {
     console.log(props);
-    const {cartItems} = useContext(CartContext);
+    const { cartItems } = useContext(CartContext);
+    const {theme,setTheme} = useContext(ThemeContext);
 
     const renderNavBarLinks = () => {
         const navItems = props.headerConfig.links;
-        
+
         return (
-          navItems.length>0?  navItems.map((item, index) => {
+            navItems.length > 0 ? navItems.map((item, index) => {
                 return (<li class="nav-item" key={index}>
                     <a class="nav-link active" href="#">{item}
                     </a>
                 </li>)
-            }):null
+            }) : null
         )
     }
     return (
@@ -28,9 +30,16 @@ export const Header = (props) => {
                     <ul class="navbar-nav me-auto">
                         {renderNavBarLinks()}
                         <li class="nav-item">
-                    <a class="nav-link active" href="#">Cart-{cartItems.length}
-                    </a>
-                </li>
+                            <a class="nav-link active" href="#">Cart-{cartItems.length}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" onClick={e=>{
+                                let newTheme = theme=='Dark'?"Light":'Dark';
+                                setTheme(newTheme);
+                            }}>{theme}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
