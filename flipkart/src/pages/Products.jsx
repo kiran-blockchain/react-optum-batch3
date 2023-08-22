@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { GET_ALL_PRODUCTS } from "../constants"
 import { services } from "../services"
 import { ProductList } from "../components/ProductList";
+import { Paginator } from "../components/Paginator";
 
 export const Products = () => {
     const [products, setProducts] = useState({
@@ -15,11 +16,11 @@ export const Products = () => {
         const getProducts = async (url) => {
             try {
                 let result = await services.getApi(url);
-                setProducts(result);
+                setProducts({...result,error:""});
             }
             catch (ex) {
                 setProducts({ ...products, error: "Error in fetching results" })
-            }
+            } 
         }
         getProducts(GET_ALL_PRODUCTS)
 
@@ -34,6 +35,7 @@ export const Products = () => {
                     <strong>Oh snap!</strong> <a href="#" class="alert-link">Error in Fetching products please try later</a>
                 </div>)
             }
+            <Paginator total={products.total}/>
         </div>
     )
 }

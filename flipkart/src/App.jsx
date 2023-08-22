@@ -1,30 +1,27 @@
 import { useState } from "react";
 import { Counter } from "./components/Counter";
-import {  Footer } from "./components/Footer"
+import { Footer } from "./components/Footer"
 import { Header } from "./components/Header"
 import { Register } from "./pages/Register";
-import { Products } from "./pages/Prodcuts";
+import { Products } from "./pages/Products";
+import { CartContext } from "./Providers/CartProvider";
 
 export const App = () => {
-    const companyName ='Optum Global Services';//
-    const headerDetails ={
-        companyName:"Optum Golbal Services",
-        theme:"dark",
-        links:['Home','Electronics', 'Apparel']
-
-    }
-    const [count,setCount] = useState(10);
-    const handleClickFromChild =(e)=>{
-        setCount(count+1);
-    }
+    const companyName = 'Optum Global Services';//
+    const headerDetails = {
+        companyName: "Optum Golbal Services",
+        theme: "dark",
+        links: ['Home', 'Electronics', 'Apparel']
+    };
+    const [cartItems,setCartItems] = useState([]);
+   
     return (
         <div>
-            <Header headerConfig = {headerDetails}/>
-            <Products/>
-            {/* <Register/>
-            <Counter handleClick ={handleClickFromChild}/>{count} */}
-            
-            <Footer/>
+            <CartContext.Provider value={{cartItems,setCartItems}}>
+                <Header headerConfig={headerDetails} />
+                <Products />
+                <Footer />
+            </CartContext.Provider>
         </div>
     )
 }
