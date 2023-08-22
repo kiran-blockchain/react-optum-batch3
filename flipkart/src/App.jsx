@@ -6,6 +6,7 @@ import { Register } from "./pages/Register";
 import { Products } from "./pages/Products";
 import { CartContext } from "./Providers/CartProvider";
 import { ThemeContext } from "./Providers/ThemeProvider";
+import { Cart } from "./components/Cart";
 
 export const App = () => {
     const companyName = 'Optum Global Services';//
@@ -21,7 +22,14 @@ export const App = () => {
             <ThemeContext.Provider value={{ theme, setTheme }}>
                 <CartContext.Provider value={{ cartItems, setCartItems }}>
                     <Header headerConfig={headerDetails} />
-                    <Products />
+                    <div class="row">
+                       <div className="col-md-9">
+                        <Products />
+                        </div>
+                        <div className="col-md-3">
+                            <Cart/>
+                        </div>
+                    </div>
                     <Footer />
                 </CartContext.Provider>
             </ThemeContext.Provider>
