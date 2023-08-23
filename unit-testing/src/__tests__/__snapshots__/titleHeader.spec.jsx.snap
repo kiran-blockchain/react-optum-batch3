@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TitleHeader /> should render correctly 1`] = `
+<h1
+  className="text-center"
+>
+  Hello World
+</h1>
+`;
+
+exports[`TestTileHeader component should render correctly 1`] = `
+<h1
+  className="text-center"
+>
+  Hello World
+</h1>
+`;
