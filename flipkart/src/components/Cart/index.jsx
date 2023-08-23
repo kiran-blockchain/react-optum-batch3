@@ -1,8 +1,11 @@
 import { useContext, useState } from "react"
 import { CartContext } from "../../Providers/CartProvider"
+import { useSelector } from "react-redux";
 
 export const Cart = () => {
-    const { cartItems } = useContext(CartContext);
+    //const { cartItems } = useContext(CartContext);
+    const cart = useSelector(x=>x.cart);
+    const cartItems = cart.cartItems
     let total = 0;
 
     cartItems.forEach((item, index) => {

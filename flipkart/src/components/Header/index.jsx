@@ -1,21 +1,25 @@
 import { useContext } from "react";
 import { CartContext } from "../../Providers/CartProvider";
 import { ThemeContext } from "../../Providers/ThemeProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Header = (props) => {
     console.log(props);
-    const { cartItems } = useContext(CartContext);
+    //const { cartItems } = useContext(CartContext);
+    const { cartItems } = useSelector(x=>x.cart);
     const {theme,setTheme} = useContext(ThemeContext);
-
+    const navigate = useNavigate();
     const renderNavBarLinks = () => {
         const navItems = props.headerConfig.links;
-
+        
         return (
             navItems.length > 0 ? navItems.map((item, index) => {
                 return (<li class="nav-item" key={index}>
                     {/* <Link to={item} className="nav-link">{item}</Link> */}
-                    <a class="nav-link active" href={item.toLowerCase()}>{item}
+                    <a class="nav-link active" href="javascript:void(0)" onClick={e=>{
+                        navigate("/"+item.toLowerCase())
+                    }}>{item}
                     </a>
                 </li>)
             }) : null
@@ -32,8 +36,9 @@ export const Header = (props) => {
                     <ul class="navbar-nav me-auto">
                         {renderNavBarLinks()}
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Cart-{cartItems.length}
-                            </a>
+                            {/* <Link to="/cart">Cart</Link> */}
+                            {/* <a class="nav-link active" href="/cart">Cart-{cartItems.length}
+                            </a> */}
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#" onClick={e=>{

@@ -3,26 +3,31 @@ import { GET_ALL_PRODUCTS } from "../constants"
 import { services } from "../services"
 import { ProductList } from "../components/ProductList";
 import { Paginator } from "../components/Paginator";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../store/ProductSlice";
 
 export const Products = () => {
-    const [products, setProducts] = useState({
-        "total": 0,
-        "skip": 0,
-        "limit": 0,
-        "products": [],
-        "error": "",
-    });
+    // const [products, setProducts] = useState({
+    //     "total": 0,
+    //     "skip": 0,
+    //     "limit": 0,
+    //     "products": [],
+    //     "error": "",
+    // });
+     const products = useSelector(x=>x.products);
+    const dispatch = useDispatch();
     useEffect(() => {
-        const getProducts = async (url) => {
-            try {
-                let result = await services.getApi(url);
-                setProducts({...result,error:""});
-            }
-            catch (ex) {
-                setProducts({ ...products, error: "Error in fetching results" })
-            } 
-        }
-        getProducts(GET_ALL_PRODUCTS)
+        // const getProducts = async (url) => {
+        //     try {
+        //         let result = await services.getApi(url);
+        //         setProducts({...result,error:""});
+        //     }
+        //     catch (ex) {
+        //         setProducts({ ...products, error: "Error in fetching results" })
+        //     } 
+        // }
+        //getProducts(GET_ALL_PRODUCTS)
+        dispatch(fetchProducts(GET_ALL_PRODUCTS));
 
     }, []);
 

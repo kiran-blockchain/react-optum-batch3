@@ -14,14 +14,13 @@ export const App = () => {
     const headerDetails = {
         companyName: "Optum Golbal Services",
         theme: "dark",
-        links: ['Home', 'Register', 'Login','Products']
+        links: ['Home', 'Register', 'Login','Products','Cart']
     };
     const [cartItems, setCartItems] = useState([]);
     const [theme, setTheme] = useState("Dark");
     return (
-        <div>
-            <ThemeContext.Provider value={{ theme, setTheme }}>
-            
+        <div className="container-fluid">
+            <ThemeContext.Provider value={{ theme, setTheme }}>           
                 <CartContext.Provider value={{ cartItems, setCartItems }}>
                 <Header headerConfig={headerDetails} />
                     {/* <div class="row">
@@ -29,7 +28,7 @@ export const App = () => {
                         <Products />
                         </div>
                         <div className="col-md-3">
-                            <Cart/>
+                            
                         </div>
                     </div> */}
                     <AppRoutes/>
