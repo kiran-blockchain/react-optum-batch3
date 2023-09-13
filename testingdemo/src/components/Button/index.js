@@ -7,7 +7,12 @@ export const Button = () => {
             <label data-testid="count">{count}</label>
             <button data-testid="btnOne" id="btnOne" onClick={e => {
                 setCount(count + 1);
-            }}>Click</button>
+            }}>Increment</button>
+             <button data-testid="btnOne" id="btnTwo" onClick={e => {
+                if(count>0){
+                    setCount(count-1)
+                };
+            }}>Decrement</button>
         </div>
     )
 }
