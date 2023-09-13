@@ -10,6 +10,7 @@ import { Cart } from "./components/Cart";
 import { AppRoutes } from "./routes";
 import { AuthContext } from "./Providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { DemoRef } from "./components/DemoRef";
 
 export const App = () => {
     const navigate =useNavigate();
@@ -39,6 +40,7 @@ export const App = () => {
     }
     return (
         <div className="container-fluid">
+            <DemoRef/>
             <AuthContext.Provider value={{ profile, handleLogin, handleLogout }}>
                 <ThemeContext.Provider value={{ theme, setTheme }}>
                     <CartContext.Provider value={{ cartItems, setCartItems }}>
