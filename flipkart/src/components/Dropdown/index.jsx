@@ -15,7 +15,7 @@
     placeholder:""
 }*/
 export const Dropdown = (props) => {
-    const { dropdownConfig,list } = props;
+    const { dropdownConfig,list,formik } = props;
     const buildOptions = ()=>{
      return list.map((item,index)=>{
         return <option key={index} value={item.value}>{item.text}</option>
@@ -29,16 +29,14 @@ export const Dropdown = (props) => {
             class="form-control" 
             id={dropdownConfig.id}
             name={dropdownConfig.name}
-            value={dropdownConfig.value}
-            onChange={(e)=>{
-                props.changeEvt(e.target)
-            }}
+            value={formik.values[dropdownConfig.name]}
+            onChange={formik.handleChange}
             >
                 <option value="">Please Select</option>
                 {buildOptions()}
             </select>
             <small id={dropdownConfig.id}
-                 class="form-text text-muted">{dropdownConfig.helpText}</small>
+                 class="form-text text-danger">{formik.errors[dropdownConfig.name]}</small>
             </div>
         </div>
     )

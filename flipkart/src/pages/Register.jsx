@@ -5,6 +5,8 @@ import { registerConfig } from "../config/registerConfig";
 import { GET_COUNTRIES_URL } from "../constants";
 import {  services } from "../services";
 import { useApiGet } from "../hooks/useApi";
+import { useFormik } from "formik";
+import { ValidateLoginSchema } from "../utils/Schema";
 
 export const Register = () => {
     const [register,setRegister] = useState({
@@ -15,10 +17,11 @@ export const Register = () => {
         confirmPassword:"",
         country:""
     });
-    // const [countryList,setCountryList] = useState([{
-    //     value:"",text:"Please Select"
-    // }]);
-    const countriesResponse = useApiGet(GET_COUNTRIES_URL);
+    const [countryList,setCountryList] = useState([{
+        value:"",text:"Please Select"
+    }]);
+    // const countriesResponse = useApiGet(GET_COUNTRIES_URL);
+    // console.log(countriesResponse)
 
 
     const handleChange =(element)=>{
@@ -34,33 +37,44 @@ export const Register = () => {
         label: "Select Countries"
     };
 
-    // useEffect(()=>{
+    useEffect(()=>{
        
-    //     const getCountries = async(url)=>{
-    //         let result  = await services.getApi(url);
-    //         console.log(result);
-    //         const mappedResponse = result.map((item,index)=>{
-    //             return {text:item.name,
-    //                 value:item.alpha2Code}
-    //         });
-    //         setCountryList(mappedResponse);
-    //     };
+        const getCountries = async(url)=>{
+            let result  = await services.getApi(url);
+            console.log(result);
+            const mappedResponse = result.map((item,index)=>{
+                return {text:item.name,
+                    value:item.alpha2Code}
+            });
+            setCountryList(mappedResponse);
+        };
         
-    //     //make the api call
-    //     getCountries(GET_COUNTRIES_URL)
+        //make the api call
+        getCountries(GET_COUNTRIES_URL)
 
-    // },[]);
+    },[]);
+    const formik = useFormik({
+        initialValues: register,
+        validationSchema: ValidateLoginSchema(),
+        onSubmit: (values) => {
+            console.log(values);
+            console.log(formik.values);
+            setRegister({...register,...formik.values})
+        },
+    })
 
     return (
         <form className="container mt-5">
             <Textbox textBoxConfig={registerConfig.firstName} 
-            changeEvt={handleChange} />
-            <Textbox textBoxConfig={registerConfig.lastName}  changeEvt={handleChange} />
-            <Textbox textBoxConfig={registerConfig.email}  changeEvt={handleChange} />
-            <Textbox textBoxConfig={registerConfig.password}  changeEvt={handleChange} />
-            <Textbox textBoxConfig={registerConfig.confirmPassword}  changeEvt={handleChange}/>
-            <Dropdown dropdownConfig={dropdown} list={countriesResponse.data}  changeEvt={handleChange}/>
-            <label>{JSON.stringify(register)}</label>
+            formik={formik} />
+            <Textbox textBoxConfig={registerConfig.lastName} formik={formik}   />
+            <Textbox textBoxConfig={registerConfig.email}  formik={formik}  />
+            <Textbox textBoxConfig={registerConfig.password}  formik={formik}  />
+            <Textbox textBoxConfig={registerConfig.confirmPassword}  formik={formik} />
+            <Dropdown dropdownConfig={dropdown} list={countryList}  formik={formik}/>
+            <div class="col-md-3">
+                <button className="btn btn-success" type="button" onClick={formik.handleSubmit}>Login</button>
+            </div>
         </form>
     )
 }

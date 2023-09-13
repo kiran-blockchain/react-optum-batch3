@@ -15,7 +15,7 @@
     placeholder:""
 }*/
 export const Textbox = (props) => {
-    const { textBoxConfig } = props;
+    const { textBoxConfig,formik } = props;
     return (
         <div class="form-group row">
             <label for={textBoxConfig.id} class="col-sm-2 col-form-label">{textBoxConfig.label}</label>
@@ -24,14 +24,12 @@ export const Textbox = (props) => {
             class="form-control" 
             id={textBoxConfig.id}
             name={textBoxConfig.name}
-            value={textBoxConfig.value}
-            onChange={(e)=>{
-                props.changeEvt(e.target)
-            }}
+            value={formik.values[textBoxConfig.name]}
+            onChange={formik.handleChange}
             aria-describedby={textBoxConfig.helpField} 
             placeholder={textBoxConfig.placeholder}/>
                 <small id={textBoxConfig.id}
-                 class="form-text text-muted">{textBoxConfig.helpText}</small>
+                 class="form-text text-danger">{formik.errors[textBoxConfig.name]}</small>
             </div>
         </div>
     )
