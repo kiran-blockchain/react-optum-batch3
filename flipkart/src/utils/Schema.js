@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
-export const ValidateLoginSchema = () => {
-    return Yup.object().shape({
+export const ValidateLoginSchema = Yup.object({
         email: Yup.string()
             .email('Enter a valid email format')
             .required('Email is required'),
@@ -12,7 +11,9 @@ export const ValidateLoginSchema = () => {
             .required('LastName is required')
             .min(1, 'Minimum length should be at least 1 characters')
             .matches(/^[A-Za-z]+$/, 'Last name should contain only alphabets'),
-        
+        username: Yup.string()
+            .required('Username is required'),
+
         password: Yup.string()
             .min(6, 'Password must be at least 6 characters')
             .max(40, 'Password cannot exceed 40 characters')
@@ -21,10 +22,9 @@ export const ValidateLoginSchema = () => {
             .min(6, 'Confirm Password must be at least 6 characters')
             .max(40, 'Confirm Password cannot exceed 40 characters')
             .required('Confirm Password is required')
-            .oneOf([Yup.ref('password'),null],'Confirm password does not match'),
-            country: Yup.string()
-           
+            .oneOf([Yup.ref('password'), null], 'Confirm password does not match'),
+        country: Yup.string()
+
             .required('Please Select Country')
-           
-    })
-}
+
+    });

@@ -17,6 +17,15 @@ export const registerConfig ={
         helpText: "",
         placeholder: "Enter Last Name"
     },
+    username: {
+        label: "User Name",
+        type: "text",
+        id: "username",
+        name: "username",
+        helpField: "",
+        helpText: "",
+        placeholder: "Enter username"
+    },
     password: {
         label: "Password",
         type: "password",

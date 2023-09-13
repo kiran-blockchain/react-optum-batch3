@@ -11,7 +11,7 @@ import axios from "axios"
 };
  const postApi = async (url,data)=>{
     try{
-        let result = await axios.get(url,data);
+        let result = await axios.post(url,data);
         return result.data;
     }
     catch(ex){

@@ -35,9 +35,9 @@ export const Products = () => {
         <div>
             {products.error == '' ?
                 <ProductList data={products} />
-                : (<div class="alert alert-dismissible alert-danger">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    <strong>Oh snap!</strong> <a href="#" class="alert-link">Error in Fetching products please try later</a>
+                : (<div className="alert alert-dismissible alert-danger">
+                    <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Oh snap!</strong> <a href="#" className="alert-link">Error in Fetching products please try later</a>
                 </div>)
             }
             <Paginator total={products.total}/>

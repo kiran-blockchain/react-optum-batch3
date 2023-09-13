@@ -7,21 +7,21 @@ export const Paginator = (props) => {
     const generatePages = () => {
         return (
             pageSize.map((item, index) => {
-                return (<li class="page-item active" key={index}>
-                    <a class="page-link" href="#">{item}</a>
+                return (<li className="page-item active" key={index}>
+                    <a className="page-link" href="#">{item}</a>
                 </li>)
             })
         )
     }
     return (
         <div>
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">&laquo;</a>
+            <ul className="pagination">
+                <li className="page-item disabled">
+                    <a className="page-link" href="#">&laquo;</a>
                 </li>
                 {generatePages()}
-                <li class="page-item">
-                    <a class="page-link" href="#">&raquo;</a>
+                <li className="page-item">
+                    <a className="page-link" href="#">&raquo;</a>
                 </li>
             </ul>
         </div>

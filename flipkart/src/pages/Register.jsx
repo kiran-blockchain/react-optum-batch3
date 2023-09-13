@@ -55,7 +55,7 @@ export const Register = () => {
     },[]);
     const formik = useFormik({
         initialValues: register,
-        validationSchema: ValidateLoginSchema(),
+        validationSchema: ValidateLoginSchema,
         onSubmit: (values) => {
             console.log(values);
             console.log(formik.values);
@@ -72,7 +72,7 @@ export const Register = () => {
             <Textbox textBoxConfig={registerConfig.password}  formik={formik}  />
             <Textbox textBoxConfig={registerConfig.confirmPassword}  formik={formik} />
             <Dropdown dropdownConfig={dropdown} list={countryList}  formik={formik}/>
-            <div class="col-md-3">
+            <div className="col-md-3">
                 <button className="btn btn-success" type="button" onClick={formik.handleSubmit}>Login</button>
             </div>
         </form>

@@ -8,16 +8,16 @@ export const Product = (props) => {
     //const { cartItems, setCartItems } = useContext(CartContext);
      const dispatch = useDispatch()
     return (
-        <div class="col-md-3 card mt-3">
-            <div class="p-5">
-                <img src={product.images[0]} class="imageStyle card-img-top" alt="..." />
-                <div class="card-body">
-                    <h5 class="card-title">{product.title}</h5>
-                    <p class="card-text">{product.description}</p>
+        <div className="col-md-3 card mt-3">
+            <div className="p-5">
+                <img src={product.images[0]} className="imageStyle card-img-top" alt="..." />
+                <div className="card-body">
+                    <h5 className="card-title">{product.title}</h5>
+                    <p className="card-text">{product.description}</p>
 
                     <div className="mt-3">
                       
-                            <a href="#" class="btn btn-primary">${product.price}</a> &nbsp;
+                            <a href="#" className="btn btn-primary">${product.price}</a> &nbsp;
                             
                                 <button className="btn btn-success mt-2" onClick={e => {
                                     //setCartItems([...cartItems, product])
@@ -26,7 +26,7 @@ export const Product = (props) => {
                     </div>
                     <div className="mt-3">
                       
-                      <a href="#" class="btn btn-primary">${product.price}</a> &nbsp;
+                      <a href="#" className="btn btn-primary">${product.price}</a> &nbsp;
                       
                           <button className="btn btn-danger mt-2" onClick={e => {
                               //setCartItems([...cartItems, product])

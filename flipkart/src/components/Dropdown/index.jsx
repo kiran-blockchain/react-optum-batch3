@@ -22,11 +22,11 @@ export const Dropdown = (props) => {
      })
     }
     return (
-        <div class="form-group row">
-            <label for={dropdownConfig.id} class="col-sm-2 col-form-label">{dropdownConfig.label}</label>
-            <div class="col-sm-4">
+        <div className="form-group row">
+            <label for={dropdownConfig.id} className="col-sm-2 col-form-label">{dropdownConfig.label}</label>
+            <div className="col-sm-4">
             <select
-            class="form-control" 
+            className="form-control" 
             id={dropdownConfig.id}
             name={dropdownConfig.name}
             value={formik.values[dropdownConfig.name]}
@@ -36,7 +36,7 @@ export const Dropdown = (props) => {
                 {buildOptions()}
             </select>
             <small id={dropdownConfig.id}
-                 class="form-text text-danger">{formik.errors[dropdownConfig.name]}</small>
+                 className="form-text text-danger">{formik.errors[dropdownConfig.name]}</small>
             </div>
         </div>
     )
