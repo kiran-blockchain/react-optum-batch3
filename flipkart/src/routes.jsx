@@ -30,9 +30,13 @@ export const AppRoutes = () => {
 const ProtectedRoutes = ({children}) => {
    
     const { profile } = useContext(AuthContext);
-    if(!profile.isLoggedIn){
+    const token = localStorage.getItem('token');
+    if(token&& token.length>1){
+        return children  
+    }
+    else{
        return <Navigate to="/login" replace/>  
     }   
-    return children
+    
 
 }

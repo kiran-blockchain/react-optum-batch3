@@ -26,6 +26,7 @@ export const App = () => {
         if (data.token) {
             localStorage.setItem('token',data.token);
             setProfile({ ...profile, ...data, isLoggedIn: true });
+            navigate("/products");
         }else{
             handleLogout();
             navigate("/login");
@@ -34,6 +35,7 @@ export const App = () => {
     const handleLogout = () => {
         localStorage.clear();
         setProfile({ isLoggedIn: false });
+        navigate("/login");
     }
     return (
         <div className="container-fluid">
